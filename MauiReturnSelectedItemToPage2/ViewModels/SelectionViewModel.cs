@@ -32,8 +32,6 @@ namespace MauiReturnSelectedItemToPage2.ViewModels
                 if (value != null)
                 {
                     _selectionState.SelectedItem = value;
-                    OnPropertyChanged(nameof(SelectedItem));
-                    // Once an item is selected, navigate back to MainPage
                     _ = _nav.PopAsync();
                 }
             }
