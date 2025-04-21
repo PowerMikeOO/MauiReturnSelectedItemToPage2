@@ -18,6 +18,7 @@ namespace MauiReturnSelectedItemToPage2.ViewModels
         public MainViewModel(ISelectionState selectionState)
         {
             _selectionState = selectionState;
+
             //Listen to changes on the shared selection state and update the UI.
             _selectionState.PropertyChanged += (s, e) =>
             {
@@ -31,11 +32,10 @@ namespace MauiReturnSelectedItemToPage2.ViewModels
             {
                 // Navigate to SelectionPage. The navigation instance is already set via the MainPage.
                 await Nav.PushAsync(new SelectionPage(new SelectionViewModel(_selectionState, Nav)));
-                OnPropertyChanged(nameof(SelectedItem));
+                //OnPropertyChanged(nameof(SelectedItem));
             });
         }
 
-        //public MauiReturnSelectedItemToPage2.Models.Item SelectedItem => _selectionState.SelectedItem;
         public Item SelectedItem
         {
             get => _selectionState.SelectedItem;
@@ -44,7 +44,7 @@ namespace MauiReturnSelectedItemToPage2.ViewModels
                 if (_selectionState.SelectedItem != value)
                 {
                     _selectionState.SelectedItem = value;
-                    OnPropertyChanged();
+                    //OnPropertyChanged();
                 }
             }
         }
