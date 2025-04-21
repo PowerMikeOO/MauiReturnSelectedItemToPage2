@@ -1,5 +1,6 @@
 using System.Windows.Input;
 using Microsoft.Maui.Controls;
+using MauiReturnSelectedItemToPage2.Models;
 using MauiReturnSelectedItemToPage2.Services;
 using MauiReturnSelectedItemToPage2.Views;
 
@@ -17,6 +18,15 @@ namespace MauiReturnSelectedItemToPage2.ViewModels
         public MainViewModel(ISelectionState selectionState)
         {
             _selectionState = selectionState;
+            // Listen to changes on the shared selection state and update the UI.
+            //_selectionState.PropertyChanged += (s, e) =>
+            //{
+            //    if (e.PropertyName == nameof(_selectionState.SelectedItem))
+            //    {
+            //        OnPropertyChanged(nameof(SelectedItem));
+            //    }
+            //};
+
             GoPickCommand = new Command(async () =>
             {
                 // Navigate to SelectionPage. The navigation instance is already set via the MainPage.
