@@ -25,6 +25,18 @@ namespace MauiReturnSelectedItemToPage2.ViewModels
             });
         }
 
-        public MauiReturnSelectedItemToPage2.Models.Item SelectedItem => _selectionState.SelectedItem;
+        //public MauiReturnSelectedItemToPage2.Models.Item SelectedItem => _selectionState.SelectedItem;
+        public Item SelectedItem
+        {
+            get => _selectionState.SelectedItem;
+            set
+            {
+                if (_selectionState.SelectedItem != value)
+                {
+                    _selectionState.SelectedItem = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
     }
 }
