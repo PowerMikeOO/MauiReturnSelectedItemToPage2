@@ -1,25 +1,15 @@
-﻿namespace MauiReturnSelectedItemToPage2
+﻿using MauiReturnSelectedItemToPage2.ViewModels;
+
+namespace MauiReturnSelectedItemToPage2
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
-        public MainPage()
+        public MainPage(MainViewModel viewModel)
         {
             InitializeComponent();
-        }
-
-        private void OnCounterClicked(object sender, EventArgs e)
-        {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            // Set the navigation instance into the view model.
+            viewModel.Nav = Navigation;
+            BindingContext = viewModel;
         }
     }
-
 }
