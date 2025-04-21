@@ -18,14 +18,14 @@ namespace MauiReturnSelectedItemToPage2.ViewModels
         public MainViewModel(ISelectionState selectionState)
         {
             _selectionState = selectionState;
-            // Listen to changes on the shared selection state and update the UI.
-            //_selectionState.PropertyChanged += (s, e) =>
-            //{
-            //    if (e.PropertyName == nameof(_selectionState.SelectedItem))
-            //    {
-            //        OnPropertyChanged(nameof(SelectedItem));
-            //    }
-            //};
+            //Listen to changes on the shared selection state and update the UI.
+            _selectionState.PropertyChanged += (s, e) =>
+            {
+                if (e.PropertyName == nameof(_selectionState.SelectedItem))
+                {
+                    OnPropertyChanged(nameof(SelectedItem));
+                }
+            };
 
             GoPickCommand = new Command(async () =>
             {
