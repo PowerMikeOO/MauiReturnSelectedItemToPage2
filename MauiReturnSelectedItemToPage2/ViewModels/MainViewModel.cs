@@ -6,20 +6,34 @@ using MauiReturnSelectedItemToPage2.Views;
 
 namespace MauiReturnSelectedItemToPage2.ViewModels
 {
+    /// <summary>
+    /// The MainViewModel coordinates the main UI, providing navigation and data binding for the MainPage.
+    /// It exposes the currently selected item as stored in a shared <see cref="ISelectionState"/> instance.
+    /// </summary>
     public class MainViewModel : BaseViewModel
     {
         private readonly ISelectionState _selectionState;
 
-        // This will be set from the code-behind
+        /// <summary>
+        /// Gets or sets the navigation instance. This must be set from the code-behind.
+        /// </summary>
         public INavigation Nav { get; set; }
 
+        /// <summary>
+        /// Gets the command that navigates to the selection page where the user can pick an item.
+        /// </summary>
         public ICommand GoPickCommand { get; }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainViewModel"/> class.
+        /// Subscribes to the shared selection state notifications to update the UI when the selected item changes.
+        /// </summary>
+        /// <param name="selectionState">The shared selection state.</param>
         public MainViewModel(ISelectionState selectionState)
         {
             _selectionState = selectionState;
 
-            //Listen to changes on the shared selection state and update the UI.
+            // Subscribe to property changes in the selection state to update the UI.
             _selectionState.PropertyChanged += (s, e) =>
             {
                 if (e.PropertyName == nameof(_selectionState.SelectedItem))
@@ -30,23 +44,15 @@ namespace MauiReturnSelectedItemToPage2.ViewModels
 
             GoPickCommand = new Command(async () =>
             {
-                // Navigate to SelectionPage. The navigation instance is already set via the MainPage.
+                // Navigate to the SelectionPage, passing in a new SelectionViewModel using the shared selection state.
                 await Nav.PushAsync(new SelectionPage(new SelectionViewModel(_selectionState, Nav)));
-                //OnPropertyChanged(nameof(SelectedItem));
             });
         }
 
-        public Item SelectedItem
-        {
-            get => _selectionState.SelectedItem;
-            set
-            {
-                if (_selectionState.SelectedItem != value)
-                {
-                    _selectionState.SelectedItem = value;
-                    //OnPropertyChanged();
-                }
-            }
-        }
+        /// <summary>
+        /// Gets the currently selected item from the shared <see cref="ISelectionState"/>.
+        /// This value is automatically updated in the UI when the selection state changes.
+        /// </summary>
+        public Item SelectedItem => _selectionState.SelectedItem;
     }
 }
