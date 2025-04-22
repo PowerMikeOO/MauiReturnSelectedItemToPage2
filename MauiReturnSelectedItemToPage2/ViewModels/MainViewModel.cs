@@ -6,29 +6,21 @@ using MauiReturnSelectedItemToPage2.Views;
 
 namespace MauiReturnSelectedItemToPage2.ViewModels
 {
-    /// <summary>
-    /// The MainViewModel coordinates the main UI, providing navigation and data binding for the MainPage.
-    /// It exposes the currently selected item as stored in a shared <see cref="ISelectionState"/> instance.
-    /// </summary>
+    // The MainViewModel coordinates the main UI, providing navigation and data binding for the MainPage.
+    // It exposes the currently selected item as stored in a shared ISelectionState instance.
     public class MainViewModel : BaseViewModel
     {
         private readonly ISelectionState _selectionState;
 
-        /// <summary>
-        /// Gets or sets the navigation instance. This must be set from the code-behind.
-        /// </summary>
+        // Gets or sets the navigation instance. This must be set from the code-behind.
         public INavigation Nav { get; set; }
 
-        /// <summary>
-        /// Gets the command that navigates to the selection page where the user can pick an item.
-        /// </summary>
+        // Gets the command that navigates to the selection page where the user can pick an item.
         public ICommand GoPickCommand { get; }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MainViewModel"/> class.
-        /// Subscribes to the shared selection state notifications to update the UI when the selected item changes.
-        /// </summary>
-        /// <param name="selectionState">The shared selection state.</param>
+        // Initializes a new instance of the MainViewModel class.
+        // Subscribes to the shared selection state notifications to update the UI when the selected item changes.
+        // selectionState: The shared selection state.
         public MainViewModel(ISelectionState selectionState)
         {
             _selectionState = selectionState;
@@ -49,10 +41,8 @@ namespace MauiReturnSelectedItemToPage2.ViewModels
             });
         }
 
-        /// <summary>
-        /// Gets the currently selected item from the shared <see cref="ISelectionState"/>.
-        /// This value is automatically updated in the UI when the selection state changes.
-        /// </summary>
+        // Gets the currently selected item from the shared ISelectionState.
+        // This value is automatically updated in the UI when the selection state changes.
         public Item SelectedItem => _selectionState.SelectedItem;
     }
 }
