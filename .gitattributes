@@ -2,7 +2,25 @@
 # Set default behavior to automatically normalize line endings.
 ###############################################################################
 * text=auto
+
+# CS Project Files
+*.csproj text eol=lf
+
+# CS Code
 *.cs  text eol=lf
+
+# Graphics
+*.svg    text eol=lf
+
+# UI markup
+*.xaml   text eol=lf
+
+# Data/config
+*.json   text eol=lf
+
+# XML Files
+*.xml text eol=lf
+
 
 # Declare files that will always have CRLF line endings on checkout.
 *.sln text eol=crlf
@@ -47,6 +65,7 @@
 *.jpg   binary
 *.png   binary
 *.gif   binary
+*.ttf   binary
 
 ###############################################################################
 # diff behavior for common document formats
