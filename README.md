@@ -4,10 +4,10 @@ This is a simple sample project that demonstrates how to share a selected item f
 
 ### Key Features
 
--	Shared Selection State: Uses an ISelectionState service to share and update the selected item between pages.
--	Navigation: Demonstrates how to navigate between pages and pass view models.
--	Simple MVVM Implementation: Provides an example using the MVVM pattern to keep the UI synchronized with the shared state.
--	Cross-Platform: Targets Android, iOS, MacCatalyst, and Windows. (Note: the Mac and iOS versions have not been tested yet.)
+-	**Shared Selection State:** Uses an **ISelectionState service** to share and update the selected item between pages.
+-	**Navigation:** Demonstrates how to navigate between pages and pass view models.
+-	**Simple MVVM Implementation:** Provides an example using the MVVM pattern to keep the UI synchronized with the shared state.
+-	**Cross-Platform:** Targets Android, iOS, MacCatalyst, and Windows. (Note: the Mac and iOS versions have not been tested yet.)
 
 This sample is intended for individuals looking to explore how to manage and return a selected item from a list in a multi-page .NET MAUI application.
 
