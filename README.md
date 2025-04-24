@@ -37,7 +37,7 @@ To ensure consistent line endings on Windows, macOS, and Linux, this repository 
 
 If you ever update .gitattributes, run these commands in your repo root before committing:
 
-    git add --renormalize .<br>
+    git add --renormalize .
     git commit -m "Apply updated line-ending rules"
 
 Then restart or reload your editor so it picks up the new settings.
